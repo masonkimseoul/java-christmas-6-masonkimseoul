@@ -17,4 +17,18 @@ public class InputView {
 
         return visitDate;
     }
+
+    public static String getOrders() {
+        String orders;
+
+        try {
+            String input = Console.readLine();
+            orders = Validation.validateOrders(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            orders = getOrders();
+        }
+
+        return orders;
+    }
 }
