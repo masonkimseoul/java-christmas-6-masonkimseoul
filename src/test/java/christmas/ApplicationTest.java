@@ -49,6 +49,46 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 정수_변환_테스트() {
+        assertSimpleTest(() -> {
+            runException("001", "타파스-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 날짜_범위_테스트_작음() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 날짜_범위_테스트_큼() {
+        assertSimpleTest(() -> {
+            runException("32");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_예외_테스트_음료만_주문() {
+        assertSimpleTest(() -> {
+            runException("3", "제로콜라-3");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_예외_테스트_중복_메뉴_주문() {
+        assertSimpleTest(() -> {
+            runException("3", "타파스-1,타파스-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
