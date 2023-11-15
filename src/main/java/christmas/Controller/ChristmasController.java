@@ -28,7 +28,7 @@ public class ChristmasController {
         OutputView.printVisitDateMsg();
         getEstimatedVisitDate();
         OutputView.printMenuOrderMsg();
-        setOrderByInput(parsingOrderInput(InputView.getOrders()));
+        getOrderByInput();
         OutputView.printOrderedMenuMsg(orderInput, event.getDate());
         OutputView.printGrossAmountMsg(order.getGrossAmount());
         getGiftAvaliable();
@@ -37,6 +37,17 @@ public class ChristmasController {
         OutputView.printAllEventAmountMsg(order.getDiscountAmount());
         OutputView.printNetAmountMsg(order.calcNetAmount(event.isGitfAvailable(order.getGrossAmount())));
         OutputView.printEventBadgeMsg(order.calcEventBadge());
+    }
+
+    public void getOrderByInput() {
+        try {
+            getMenuByInput(parsingOrderInput(InputView.getOrders()));
+            order.calcGrossAmount();
+        } catch (IllegalArgumentException e) {
+            this.orderInput.clear();
+            System.out.println(e.getMessage());
+            getOrderByInput();
+        }
     }
 
     public void getGiftAvaliable() {
@@ -67,7 +78,7 @@ public class ChristmasController {
         return orderInput;
     }
 
-    public void setOrderByInput(List<String[]> orderInput) {
+    public void getMenuByInput(List<String[]> orderInput) {
         for(String[] item : orderInput) {
             Menu orderedMenu = MenuManager.getMenuByName(item[0]);
             this.order.addMenuAtCart(orderedMenu, Validation.parseInteger(item[1]));

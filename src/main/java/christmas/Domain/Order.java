@@ -1,5 +1,6 @@
 package christmas.Domain;
 
+import christmas.Util.Validation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,13 @@ public class Order {
 
     public void addMenuAtCart(Menu menu, int count) {
         for(int i = 0; i < count; i++){
+            Validation.validateDuplicatedMenu(this.Cart, menu);
             this.Cart.add(menu);
+        }
+    }
+
+    public void calcGrossAmount(){
+        for(Menu menu : this.Cart) {
             grossAmount += menu.getPrice();
         }
     }

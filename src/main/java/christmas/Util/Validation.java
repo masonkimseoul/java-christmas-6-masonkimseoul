@@ -1,5 +1,8 @@
 package christmas.Util;
 
+import christmas.Domain.Menu;
+import java.util.List;
+
 public class Validation {
     private static final String INPUT_DATE_ERROR_MSG = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     private static final String INPUT_ORDERS_ERROR_MSG = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
@@ -36,5 +39,12 @@ public class Validation {
     public static String validateOrders(String input) {
         validateFilledOrders(input);
         return input;
+    }
+
+    public static void validateDuplicatedMenu(List<Menu> cart, Menu menu) {
+        if (cart.contains(menu)) {
+            cart.clear();
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 }
