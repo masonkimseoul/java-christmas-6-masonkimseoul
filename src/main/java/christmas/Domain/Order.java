@@ -78,7 +78,10 @@ public class Order {
         return this.eventBadge;
     }
     
-    public int calcNetAmount() {
+    public int calcNetAmount(boolean isGift) {
+        if (isGift) {
+            return this.grossAmount - this.discountedAmount + BeverageMenu.CHAMPAGNE.getPrice();
+        }
         return this.grossAmount - this.discountedAmount;
     }
 }

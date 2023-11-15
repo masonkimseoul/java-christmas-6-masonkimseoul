@@ -3,6 +3,7 @@ package christmas.View;
 import christmas.Domain.BeverageMenu;
 import christmas.Domain.Menu;
 import christmas.Util.Validation;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
@@ -22,7 +23,7 @@ public class OutputView {
     private static final String GROSS_AMOUNT_INTRO_MSG
             = "\n<할인 전 총주문 금액>\n";
     private static final String SHOW_AMOUNT_MSG
-            = "%d원\n";
+            = "%s원\n";
     private static final String GIFT_EVENT_MENU_INTRO_MSG
             = "\n<증정 메뉴>\n";
     private static final String EVENT_INTRO_MSG
@@ -71,7 +72,7 @@ public class OutputView {
 
     public static void printGrossAmountMsg(int amount) {
         System.out.print(GROSS_AMOUNT_INTRO_MSG);
-        System.out.printf(SHOW_AMOUNT_MSG, amount);
+        System.out.printf(SHOW_AMOUNT_MSG, String.format("%,d", amount));
     }
 
     public static void printNone() {
@@ -85,35 +86,38 @@ public class OutputView {
         System.out.printf(GIFT_EVENT_MENU_INTRO_MSG + ALL_MENUS_MSG, CHAMPAGNE, ONE);
     }
 
-    public static void printXMasEventAmountMsg(int amount) {
+    public static void printEventIntroMsg() {
         System.out.print(EVENT_INTRO_MSG);
+    }
+
+    public static void printXMasEventAmountMsg(int amount) {
         if (amount > ZERO) {
-            System.out.printf(X_MAX_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+            System.out.printf(X_MAX_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
         }
     }
 
     public static void printWeekDayEventAmountMsg(int amount) {
-        System.out.printf(WEEKDAY_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+        System.out.printf(WEEKDAY_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
     }
 
     public static void printWeekEndEventAmountMsg(int amount) {
-        System.out.printf(WEEKEND_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+        System.out.printf(WEEKEND_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
     }
 
     public static void printSpecialEventAmountMsg(int amount) {
-        System.out.printf(SPECIAL_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+        System.out.printf(SPECIAL_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
     }
 
     public static void printGiftEventAmountMsg(int amount) {
-        System.out.printf(GIFT_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+        System.out.printf(GIFT_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
     }
 
     public static void printAllEventAmountMsg(int amount) {
-        System.out.printf(ALL_EVENT_AMOUNT_INTRO_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
+        System.out.printf(ALL_EVENT_AMOUNT_INTRO_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
     }
 
     public static void printNetAmountMsg(int amount) {
-        System.out.printf(NET_AMOUNT_INTRO_MSG + SHOW_AMOUNT_MSG, amount);
+        System.out.printf(NET_AMOUNT_INTRO_MSG + SHOW_AMOUNT_MSG, String.format("%,d", amount));
     }
 
     public static void printEventBadgeMsg(String badge) {

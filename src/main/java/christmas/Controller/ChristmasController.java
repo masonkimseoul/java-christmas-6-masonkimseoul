@@ -32,9 +32,10 @@ public class ChristmasController {
         OutputView.printOrderedMenuMsg(orderInput, event.getDate());
         OutputView.printGrossAmountMsg(order.getGrossAmount());
         getGiftAvaliable();
+        OutputView.printEventIntroMsg();
         applyAllEvent();
         OutputView.printAllEventAmountMsg(order.getDiscountAmount());
-        OutputView.printNetAmountMsg(order.calcNetAmount());
+        OutputView.printNetAmountMsg(order.calcNetAmount(event.isGitfAvailable(order.getGrossAmount())));
         OutputView.printEventBadgeMsg(order.calcEventBadge());
     }
 
@@ -74,7 +75,8 @@ public class ChristmasController {
     }
 
     public void applyAllEvent() {
-        if (order.getGrossAmount() >= EVENT_THRESHOLD) {
+        boolean flag = (order.getGrossAmount() >= EVENT_THRESHOLD);
+        if (flag) {
             OutputView.printXMasEventAmountMsg(
                     order.discountAmount(event.calcXMasDDayDiscount()));
 
@@ -96,6 +98,9 @@ public class ChristmasController {
                 OutputView.printGiftEventAmountMsg(
                         order.applyGiftEvent(BeverageMenu.CHAMPAGNE));
             }
+        }
+        if (!flag) {
+            OutputView.printNone();
         }
     }
 }
