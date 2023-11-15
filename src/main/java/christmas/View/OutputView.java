@@ -8,6 +8,7 @@ import java.util.List;
 
 public class OutputView {
     private static final int MONTH = 12;
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String GET_VISIT_DATE_MSG
             = "안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.\n"
                     + "%d월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해주세요!)\n";
@@ -27,7 +28,7 @@ public class OutputView {
     private static final String GIFT_EVENT_MENU_INTRO_MSG
             = "\n<증정 메뉴>\n";
     private static final String EVENT_INTRO_MSG
-            = "\r\n<혜택 내역>\r\n";
+            = LINE_SEPARATOR + "<혜택 내역>" + LINE_SEPARATOR;
     private static final String X_MAX_EVENT_MSG
             = "크리스마스 디데이 할인: ";
     private static final String WEEKDAY_EVENT_MSG
