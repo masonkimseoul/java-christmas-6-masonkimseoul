@@ -5,6 +5,7 @@ import christmas.Domain.DessertMenu;
 import christmas.Domain.MainMenu;
 import christmas.Domain.Menu;
 import christmas.Domain.MenuManager;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Validation {
@@ -62,10 +63,13 @@ public class Validation {
         return input;
     }
 
-    public static void validateDuplicatedMenu(List<Menu> cart, Menu menu) {
-        if (cart.contains(menu)) {
-            cart.clear();
-            throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+    public static void validateDuplicatedMenu(List<String[]> orderInput) {
+        List<String> menus = new ArrayList<>();
+        for(String[] input : orderInput) {
+            if(menus.contains(input[0])) {
+                throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+            }
+            menus.add(input[0]);
         }
     }
 

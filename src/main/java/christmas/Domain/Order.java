@@ -30,7 +30,6 @@ public class Order {
 
     public void addMenuAtCart(Menu menu, int count) {
         for(int i = 0; i < count; i++){
-            Validation.validateDuplicatedMenu(this.Cart, menu);
             this.Cart.add(menu);
         }
     }
