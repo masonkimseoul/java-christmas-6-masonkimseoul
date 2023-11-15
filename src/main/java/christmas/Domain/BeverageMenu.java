@@ -31,5 +31,7 @@ public enum BeverageMenu implements Menu{
             = Stream.of(BeverageMenu.values())
             .collect(Collectors.toMap(b -> b.name, b -> b));
 
-
+    public static BeverageMenu getByName(String name) {
+        return beverageMenus.get(name);
+    }
 }

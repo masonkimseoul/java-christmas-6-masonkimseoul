@@ -30,4 +30,8 @@ public enum AppetizerMenu implements Menu{
     private static final Map<String, AppetizerMenu> appetizerMenus
             = Stream.of(AppetizerMenu.values())
             .collect(Collectors.toMap(a -> a.name, a -> a));
+
+    public static AppetizerMenu getByName(String name) {
+        return appetizerMenus.get(name);
+    }
 }

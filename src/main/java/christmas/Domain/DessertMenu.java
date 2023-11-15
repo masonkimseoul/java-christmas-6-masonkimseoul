@@ -29,4 +29,8 @@ public enum DessertMenu implements Menu{
     private static final Map<String, DessertMenu> dessertMenus
             = Stream.of(DessertMenu.values())
             .collect(Collectors.toMap(d -> d.name, d -> d));
+
+    public static DessertMenu getByName(String name) {
+        return dessertMenus.get(name);
+    }
 }

@@ -31,4 +31,8 @@ public enum MainMenu implements Menu{
     private static final Map<String, MainMenu> mainMenus
             = Stream.of(MainMenu.values())
             .collect(Collectors.toMap(m -> m.name, m -> m));
+
+    public static MainMenu getByName(String name) {
+        return mainMenus.get(name);
+    }
 }
