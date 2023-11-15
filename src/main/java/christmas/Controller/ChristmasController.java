@@ -81,6 +81,7 @@ public class ChristmasController {
 
     public void getMenuByInput(List<String[]> orderInput) {
         Validation.validateMenuCount(orderInput);
+        Validation.validateNoOnlyBeverage(orderInput);
         for(String[] item : orderInput) {
             Menu orderedMenu = MenuManager.getMenuByName(item[0]);
             this.order.addMenuAtCart(orderedMenu, Validation.parseOrderInteger(item[1]));
