@@ -29,7 +29,11 @@ public class Validation {
 
     public static int parseInteger(String input){
         try {
-            return Integer.parseInt(input);
+            int result = Integer.parseInt(input);
+            if (!Integer.toString(result).equals(input)) {
+                throw new IllegalArgumentException(INPUT_DATE_ERROR_MSG);
+            }
+            return result;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_DATE_ERROR_MSG);
         }
@@ -37,7 +41,11 @@ public class Validation {
 
     public static int parseOrderInteger(String input){
         try {
-            return Integer.parseInt(input);
+            int result = Integer.parseInt(input);
+            if (!Integer.toString(result).equals(input)) {
+                throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+            }
+            return result;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
         }
