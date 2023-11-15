@@ -77,13 +77,16 @@ public class OutputView {
     public static void printNone() {
         System.out.println(NONE);
     }
+    public static void printGiftMenuMsg() {
+        System.out.printf(GIFT_EVENT_MENU_INTRO_MSG);
+    }
 
     public static void printGiftMenu() {
         System.out.printf(GIFT_EVENT_MENU_INTRO_MSG + ALL_MENUS_MSG, CHAMPAGNE, ONE);
     }
 
     public static void printXMasEventAmountMsg(int amount) {
-        System.out.println(EVENT_INTRO_MSG);
+        System.out.print(EVENT_INTRO_MSG);
         if (amount > ZERO) {
             System.out.printf(X_MAX_EVENT_MSG + SHOW_AMOUNT_MSG, MINUS * amount);
         }

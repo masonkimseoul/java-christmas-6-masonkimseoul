@@ -31,11 +31,22 @@ public class ChristmasController {
         setOrderByInput(parsingOrderInput(InputView.getOrders()));
         OutputView.printOrderedMenuMsg(orderInput, event.getDate());
         OutputView.printGrossAmountMsg(order.getGrossAmount());
-        //OutputView.printGiftMenu();
+        getGiftAvaliable();
         applyAllEvent();
         OutputView.printAllEventAmountMsg(order.getDiscountAmount());
         OutputView.printNetAmountMsg(order.calcNetAmount());
         OutputView.printEventBadgeMsg(order.calcEventBadge());
+    }
+
+    public void getGiftAvaliable() {
+        int grossAmount = order.getGrossAmount();
+        if (event.isGitfAvailable(grossAmount)) {
+            OutputView.printGiftMenu();
+        }
+        if (!event.isGitfAvailable(grossAmount)) {
+            OutputView.printGiftMenuMsg();
+            OutputView.printNone();
+        }
     }
 
     public void getEstimatedVisitDate() {
@@ -68,10 +79,12 @@ public class ChristmasController {
                     order.discountAmount(event.calcXMasDDayDiscount()));
 
             if(event.isWeekDayEvent()) {
-                OutputView.printWeekDayEventAmountMsg(order.countDessertMenu() * event.calcDailyDiscount());
+                OutputView.printWeekDayEventAmountMsg(
+                        order.discountAmount(order.countDessertMenu() * event.calcDailyDiscount()));
             }
             if(!event.isWeekDayEvent()) {
-                OutputView.printWeekEndEventAmountMsg(order.countMainMenu() * event.calcDailyDiscount());
+                OutputView.printWeekEndEventAmountMsg(
+                        order.discountAmount(order.countMainMenu() * event.calcDailyDiscount()));
             }
 
             if(event.isSpecialEvent()) {
