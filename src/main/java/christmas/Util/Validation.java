@@ -31,6 +31,14 @@ public class Validation {
         }
     }
 
+    public static int parseOrderInteger(String input){
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+        }
+    }
+
     public static int validateVisitDate(String input){
         int visitDate = parseInteger(input);
         validateDateRange(visitDate);

@@ -66,7 +66,7 @@ public class OutputView {
         printEventIntroMSG(date);
         System.out.print(ORDERED_MENU_INTRO_MSG);
         for (String[] item : orderInput) {
-            System.out.printf(ALL_MENUS_MSG,item[0], Validation.parseInteger(item[1]));
+            System.out.printf(ALL_MENUS_MSG,item[0], Validation.parseOrderInteger(item[1]));
         }
     }
 

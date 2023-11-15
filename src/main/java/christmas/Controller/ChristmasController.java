@@ -82,7 +82,7 @@ public class ChristmasController {
     public void getMenuByInput(List<String[]> orderInput) {
         for(String[] item : orderInput) {
             Menu orderedMenu = MenuManager.getMenuByName(item[0]);
-            this.order.addMenuAtCart(orderedMenu, Validation.parseInteger(item[1]));
+            this.order.addMenuAtCart(orderedMenu, Validation.parseOrderInteger(item[1]));
         }
     }
 
