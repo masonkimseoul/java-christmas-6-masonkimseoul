@@ -64,4 +64,14 @@ public class Validation {
             throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
         }
     }
+
+    public static void validateMenuCount(List<String[]> orderInput) {
+        int counter = 0;
+        for (String[] item : orderInput) {
+            counter += parseOrderInteger(item[1]);
+            if (counter < 1 || counter > 20) {
+                throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+            }
+        }
+    }
 }
