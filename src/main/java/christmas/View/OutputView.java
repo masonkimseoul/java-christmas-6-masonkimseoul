@@ -27,7 +27,7 @@ public class OutputView {
     private static final String GIFT_EVENT_MENU_INTRO_MSG
             = "\n<증정 메뉴>\n";
     private static final String EVENT_INTRO_MSG
-            = "\n<혜택 내역>\n";
+            = "\r\n<혜택 내역>\r\n";
     private static final String X_MAX_EVENT_MSG
             = "크리스마스 디데이 할인: ";
     private static final String WEEKDAY_EVENT_MSG
@@ -76,7 +76,7 @@ public class OutputView {
     }
 
     public static void printNone() {
-        System.out.println(NONE);
+        System.out.print(NONE);
     }
     public static void printGiftMenuMsg() {
         System.out.printf(GIFT_EVENT_MENU_INTRO_MSG);

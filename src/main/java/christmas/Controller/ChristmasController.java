@@ -115,6 +115,7 @@ public class ChristmasController {
         }
         if (!flag) {
             OutputView.printNone();
+            System.out.println();
         }
     }
 }
