@@ -1,6 +1,7 @@
 package christmas.Util;
 
 import christmas.Domain.Menu;
+import christmas.Domain.MenuManager;
 import java.util.List;
 
 public class Validation {
@@ -44,7 +45,15 @@ public class Validation {
     public static void validateDuplicatedMenu(List<Menu> cart, Menu menu) {
         if (cart.contains(menu)) {
             cart.clear();
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+        }
+    }
+
+    public static void validateNullMenu(Menu menu) {
+        try {
+            int price = menu.getPrice();
+        } catch (NullPointerException e){
+            throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
         }
     }
 }

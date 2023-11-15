@@ -35,6 +35,10 @@ public class Order {
         }
     }
 
+    public void clearCart() {
+        this.Cart.clear();
+    }
+
     public void calcGrossAmount(){
         for(Menu menu : this.Cart) {
             grossAmount += menu.getPrice();

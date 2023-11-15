@@ -1,5 +1,6 @@
 package christmas.Domain;
 
+import christmas.Util.Validation;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,8 @@ public class MenuManager {
     }
 
     public static Menu getMenuByName(String menuName) {
-        return allMenus.get(menuName);
+        Menu menu = allMenus.get(menuName);
+        Validation.validateNullMenu(menu);
+        return menu;
     }
 }

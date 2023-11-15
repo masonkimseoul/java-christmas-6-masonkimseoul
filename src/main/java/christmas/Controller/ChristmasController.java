@@ -30,6 +30,7 @@ public class ChristmasController {
         OutputView.printMenuOrderMsg();
         getOrderByInput();
         OutputView.printOrderedMenuMsg(orderInput, event.getDate());
+        order.calcGrossAmount();
         OutputView.printGrossAmountMsg(order.getGrossAmount());
         getGiftAvaliable();
         OutputView.printEventIntroMsg();
@@ -42,9 +43,9 @@ public class ChristmasController {
     public void getOrderByInput() {
         try {
             getMenuByInput(parsingOrderInput(InputView.getOrders()));
-            order.calcGrossAmount();
         } catch (IllegalArgumentException e) {
             this.orderInput.clear();
+            order.clearCart();
             System.out.println(e.getMessage());
             getOrderByInput();
         }
