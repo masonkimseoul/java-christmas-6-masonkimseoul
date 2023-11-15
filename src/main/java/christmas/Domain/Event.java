@@ -18,10 +18,13 @@ public class Event {
     private static final int ZERO = 0;
     private static final int GIFT_EVENT_THRESHOLD = 120000;
     private static final List<Integer> SPECIAL_EVENT;
+    private static final int WEEK_LEN = 7;
+    private static final int FRI = 1;
+    private static final int SAT = 2;
 
     public Event(int date) {
         this.date = date;
-        this.isWeekDay = (date % 7 > 3);
+        this.isWeekDay = (date % WEEK_LEN != FRI && date % WEEK_LEN != SAT);
         this.isSpecial = isSpecialDate(date);
     }
 

@@ -47,7 +47,7 @@ public class Order {
     public int countDessertMenu() {
         int count = 0;
         for(Menu menu : this.Cart) {
-            if (menu.getClass() == DessertMenu.CHOCO_CAKE.getClass()) {
+            if (menu.getClass() == DessertMenu.class) {
                 count += 1;
             }
         }
@@ -58,7 +58,7 @@ public class Order {
     public int countMainMenu() {
         int count = 0;
         for(Menu menu : this.Cart) {
-            if (menu.getClass() == MainMenu.T_BONE_STEAK.getClass()) {
+            if (menu.getClass() == MainMenu.class) {
                 count += 1;
             }
         }
