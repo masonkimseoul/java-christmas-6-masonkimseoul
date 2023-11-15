@@ -97,11 +97,15 @@ public class OutputView {
     }
 
     public static void printWeekDayEventAmountMsg(int amount) {
-        System.out.printf(WEEKDAY_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
+        if (amount > 0) {
+            System.out.printf(WEEKDAY_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
+        }
     }
 
     public static void printWeekEndEventAmountMsg(int amount) {
-        System.out.printf(WEEKEND_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
+        if(amount > 0) {
+            System.out.printf(WEEKEND_EVENT_MSG + SHOW_AMOUNT_MSG, String.format("%,d", MINUS * amount));
+        }
     }
 
     public static void printSpecialEventAmountMsg(int amount) {
