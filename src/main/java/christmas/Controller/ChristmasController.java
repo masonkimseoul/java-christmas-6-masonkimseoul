@@ -59,6 +59,7 @@ public class ChristmasController {
         if (!event.isGitfAvailable(grossAmount)) {
             OutputView.printGiftMenuMsg();
             OutputView.printNone();
+            System.out.println();
         }
     }
 
