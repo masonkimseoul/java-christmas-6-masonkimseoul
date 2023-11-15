@@ -7,14 +7,6 @@ public class Validation {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 31;
 
-    private static int parseInteger(String input){
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INPUT_DATE_ERROR_MSG);
-        }
-    }
-
     private static void validateDateRange(int input) {
         if (input < MIN_VALUE || input > MAX_VALUE) {
             throw new IllegalArgumentException(INPUT_DATE_ERROR_MSG);
@@ -24,6 +16,14 @@ public class Validation {
     private static void validateFilledOrders(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException(INPUT_ORDERS_ERROR_MSG);
+        }
+    }
+
+    public static int parseInteger(String input){
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INPUT_DATE_ERROR_MSG);
         }
     }
 

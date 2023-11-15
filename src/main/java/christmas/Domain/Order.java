@@ -20,6 +20,13 @@ public class Order {
         this.discountedAmount = ZERO;
     }
 
+    public int getGrossAmount() {
+        return this.grossAmount;
+    }
+    public int getDiscountAmount() {
+        return this.discountedAmount;
+    }
+
     public void addMenuAtCart(Menu menu, int count) {
         for(int i = 0; i < count; i++){
             this.Cart.add(menu);
@@ -27,21 +34,37 @@ public class Order {
         }
     }
 
-    public void discountAmount(int amount) {
-        this.discountedAmount += amount;
-    }
-
-    public void discountMenuPrice(Menu menuType, int amount) {
-        for(Menu item : Cart) {
-            if(item.getClass() == menuType.getClass()) {
-                discountAmount(amount);
+    public int countDessertMenu() {
+        int count = 0;
+        for(Menu menu : this.Cart) {
+            if (menu.getClass() == DessertMenu.CHOCO_CAKE.getClass()) {
+                count += 1;
             }
         }
+
+        return count;
     }
 
-    public void applyGiftEvent(Menu menu) {
+    public int countMainMenu() {
+        int count = 0;
+        for(Menu menu : this.Cart) {
+            if (menu.getClass() == MainMenu.T_BONE_STEAK.getClass()) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    public int discountAmount(int amount) {
+        this.discountedAmount += amount;
+        return amount;
+    }
+
+    public int applyGiftEvent(Menu menu) {
         this.Cart.add(menu);
         this.discountedAmount += menu.getPrice();
+        return menu.getPrice();
     }
 
     public String calcEventBadge() {

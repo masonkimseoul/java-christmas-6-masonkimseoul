@@ -11,6 +11,7 @@ public class Event {
     private final boolean isSpecial;
 
     private static final int DEFAULT_DISCOUNT = 1000;
+    private static final int DAILY_DISCOUNT = 2023;
     private static final int TICK = 100;
     private static final int START_DATE = 1;
     private static final int X_MAS_DATE = 25;
@@ -38,6 +39,17 @@ public class Event {
             return DEFAULT_DISCOUNT + (this.date - START_DATE) * TICK;
         }
         return ZERO;
+    }
+
+    public int calcSpecialDiscount() {
+        if (isSpecialDate(this.date)) {
+            return DEFAULT_DISCOUNT;
+        }
+        return ZERO;
+    }
+
+    public int calcDailyDiscount() {
+        return DAILY_DISCOUNT;
     }
 
     public boolean isGitfAvailable(int grossAmount) {
